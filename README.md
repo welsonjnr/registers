@@ -13,7 +13,8 @@ Contatos:
 - Maven
 - Heroku
 
-### Link da aplicação rodando no Heroku: https://register-application.herokuapp.com/register.xhtml
+### Link da aplicação rodando no Heroku: 
+https://register-application.herokuapp.com/register.xhtml
 
 ### Caso queira baixar o projeto e rodar local:
 - Clone o repositório
