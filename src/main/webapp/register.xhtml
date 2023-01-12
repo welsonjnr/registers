@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+    <h:form>
+
+        <p:panel>
+            <f:facet name="header">
+                Novo Registro
+                <p:commandButton action="#{registerController.refresh()}"
+                                 icon="pi pi-refresh" update="@form" process="@this"/>
+            </f:facet>
+            <h:panelGrid columns="2">
+                <p:outputLabel value="CNES"/>
+                <p:inputText value="#{registerController.register.cnes}"
+                             required="true"/>
+                <p:outputLabel value="Nome do Estabelecimento"/>
+                <p:inputText value="#{registerController.register.nomeEstabelecimento}"
+                             required="true"/>
+                <p:outputLabel value="Faixa de CEP de inicio"/>
+                <p:inputText value="#{registerController.register.cepInicio}"
+                             required="true"/>
+                <p:outputLabel value="Faixa de CEP de fim"/>
+                <p:datePicker value="#{registerController.register.cepFim}"
+                              showTime="true" required="true"/>
+
+                <p:outputLabel/>
+                <p:commandButton value="Save" action="#{registerController.save()}"
+                                 update="@form" process="@parent"/>
+
+            </h:panelGrid>
+            <p:messages autoUpdate="true"/>
+        </p:panel>
+
+        <br/>
+
+        <p:panel>
+            <f:facet name="header">
+                Registros
+                <p:commandButton action="#{registerController.fetchAll()}"
+                                 icon="pi pi-refresh" update="@form" process="@this"/>
+            </f:facet>
+            <p:dataTable var="register" value="#{registerController.registers}"
+                         rows="10" paginator="true">
+
+                <p:column headerText="ID" width="10%">
+                    <h:outputText value="#{register.id}"/>
+                </p:column>
+
+                <p:column headerText="CNES" width="10%">
+                    <h:outputText value="#{register.cnes}"/>
+                </p:column>
+
+                <p:column headerText="Nome do Estabelecimento">
+                    <h:outputText value="#{register.nomeEstabelecimento}"/>
+                </p:column>
+
+                <p:column headerText="Faixa de CEP de inicio">
+                    <h:outputText value="#{register.cepInicio}"/>
+                </p:column>
+
+                <p:column headerText="Faixa de CEP de fim">
+                    <h:outputText value="#{register.cepFim}"/>
+                </p:column>
+
+            </p:dataTable>
+        </p:panel>
+    </h:form>
+
+</h:body>
+</html>
